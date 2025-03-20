@@ -26,14 +26,6 @@ export default function TicTacToe() {
     [2, 4, 6], 
   ];
 
-  // // When players enter names and click "Start"
-  // const handlePlayerSubmit = (perventreload) => {
-  //   perventreload.preventDefault(); // Stops page reload
-  //   if (players.X && players.O) {
-  //     // Check if both names are entered
-  //     setGameStarted(true); // Start the game
-  //   }
-  // };
 
   // when players enter names and click for Start the game
   const handlePlayerSubmit = (PerventReload) => {
@@ -65,7 +57,8 @@ export default function TicTacToe() {
     for (let pattern of winPatterns) {
       const [a, b, c] = pattern;
       if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-        setWinner(players[board[a]]); // Set winner name
+        //Player ke naam ke sath (X) ya (O) Show kar win karne py
+        setWinner(`${players[board[a]]} (${board[a]})`);
         return;
       }
     }
