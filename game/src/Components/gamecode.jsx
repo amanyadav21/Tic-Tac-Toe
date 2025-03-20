@@ -7,6 +7,7 @@ export default function TicTacToe() {
   const [board, setBoard] = useState(Array(9).fill(null)); // 9 boxes, all empty at start
   const [currentPlayer, setCurrentPlayer] = useState("X"); // X starts first
   const [winner, setWinner] = useState(null); // Winner or draw
+  const [error, setError] = useState("") // For Error Message ke liye naya state
 
   // Winning patterns
   const winPatterns = [
@@ -38,9 +39,14 @@ export default function TicTacToe() {
   const handlePlayerSubmit = (PerventReload) => {
     PerventReload.preventDefault();
     if (players.X && players.O) {
+      if(players.X === players.O) {
+        setError("Both players cannot have the same name!😂")
+        return;
+      }
+      setError(''); // agar error nahi hai toh error message clear karo
       setGameStarted(true)
     }
-  }
+  };
 
   // When someone clicks a box
   const handleClick = (index) => {
@@ -100,6 +106,8 @@ export default function TicTacToe() {
           <h1 className="text-2xl font-bold mb-4 text-center text-black">
             Tic-Tac-Toe
           </h1>
+          {/* Error message display karo */}
+          {error && <p className="text-red-500 text-center mb-4"> {error} </p>}
           <div className="space-y-4">
             <div>
               <label className="block mb-1 text-blue-600">Player X Name:</label>
