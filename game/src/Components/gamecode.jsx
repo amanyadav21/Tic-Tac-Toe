@@ -40,7 +40,7 @@ export default function TicTacToe() {
     PerventReload.preventDefault();
     if (players.X && players.O) {
       if(players.X === players.O) {
-        setError("Both players cannot have the same name!😂")
+        setError("Both players cannot have the same name!")
         return;
       }
       setError(''); // agar error nahi hai toh error message clear karo
